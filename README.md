@@ -21,7 +21,7 @@ This project is especially aimed at open source-first workflows, where agents ne
 
 **AI Webmaster Skills** solve these problems by giving agents up-to-date, proven procedures and checklists.
 
-## Available Skills (Planned)
+## Available Skills
 
 | Skill                    | What it does |
 |-------------------------|--------------|
@@ -30,6 +30,7 @@ This project is especially aimed at open source-first workflows, where agents ne
 | **wp-setup**            | Sets up a modern WordPress development workflow for AI-assisted work on open source CMS projects |
 | **design-md-setup**     | Sets up or retrofits DESIGN.md workflows using @google/design.md (lint, diff, export, spec) |
 | **marketing-md-setup**  | Sets up or retrofits MARKETING.md Marketing-as-Code workflows using core + companion architecture |
+| **infrastructure-md-setup** | Sets up or retrofits INFRASTRUCTURE.md workflows for Infrastructure-as-Code guidance and guardrails |
 
 ---
 
@@ -55,6 +56,9 @@ npx skills add astra-agency/ai-webmaster --skill design-md-setup
 
 # Install MARKETING.md setup skill
 npx skills add astra-agency/ai-webmaster --skill marketing-md-setup
+
+# Install INFRASTRUCTURE.md setup skill
+npx skills add astra-agency/ai-webmaster --skill infrastructure-md-setup
 
 
 ```
