@@ -24,6 +24,11 @@ Before running any installation command, ask these questions.
 - Which repo should receive the setup?
 - Install scope: `project` (recommended) or `global`?
 
+1.1 Project layout
+- Use a dedicated WordPress app directory?
+- Default for greenfield setup: `wordpress/` in repository root.
+- For existing repos, detect and reuse an existing WordPress root if present.
+
 2. Assistant targets
 - Which clients should be configured?
 - Allowed targets: `vscode`, `codex`, `claude`, `cursor`.
@@ -49,6 +54,16 @@ Before running any installation command, ask these questions.
 
 If any answer is missing or ambiguous, stop and ask a follow-up instead of guessing.
 
+## Directory placement contract
+
+Use these placement rules unless the user explicitly overrides them:
+
+- WordPress application root: `wordpress/`
+- Local WordPress runtime files should live inside `wordpress/` (for example `.wp-env.json`, app `package.json`, plugin/theme mounts)
+- Agent skill/config folders can stay in repository root (`.github/skills/`, `.codex/`, `.claude/`, `.cursor/`), because they configure the agent, not the app runtime
+
+For existing repositories that already use another app root, preserve the existing location and do not force-move files.
+
 ## Procedure
 
 ### 0) Guardrails
@@ -72,6 +87,7 @@ node -v
 npm -v
 docker --version
 rg --files -g 'AGENTS.md' -g '.wp-env.json' -g 'package.json'
+rg --files -g 'wordpress/**' -g 'wp-content/**' -g 'wp-config.php'
 rg --files -g '.github/skills/**' -g '.codex/**' -g '.claude/**' -g '.cursor/**' -g '.agents/**'
 ```
 
@@ -79,6 +95,7 @@ If `AGENTS.md` exists, use it as canonical project command source.
 
 Also detect and classify existing state:
 - preinstalled skill folders in target clients;
+- WordPress app root (`wordpress/` by default, or an existing custom root);
 - existing local custom skills that can be overwritten by official installs;
 - existing `.wp-env.json` and npm scripts that should be merged, not replaced.
 
@@ -142,12 +159,17 @@ node shared/scripts/skillpack-install.mjs --dest=<target-repo> --targets=codex,v
 
 ### 4) Configure local WordPress environment in repo
 
+Before configuration, ensure commands are executed in the WordPress app root.
+
+- Greenfield default: `cd wordpress`
+- Existing project: `cd <detected-wordpress-root>`
+
 #### Option A: `wp-env`
 
 If user chose `wp-env` or `both`:
 
 1. Ensure `@wordpress/env` is available (local dev dependency preferred).
-2. Add/verify `.wp-env.json` in repo root with minimal predictable setup.
+2. Add/verify `.wp-env.json` in WordPress app root with minimal predictable setup.
 3. Add scripts in `package.json` if missing:
 - `wp-env:start`
 - `wp-env:stop`
@@ -197,7 +219,7 @@ After setup, verify and report:
 - Examples: `.github/skills`, `.codex/skills`, `.claude/skills`, `.cursor/skills`.
 2. Installed WP skill names are listed and match user choice.
 3. Environment status:
-- `wp-env`: `npx wp-env start` succeeds.
+- `wp-env`: `npx wp-env start` succeeds from the WordPress app root (`wordpress/` by default).
 - `playground`: local server starts and prints local URL.
 4. If `AGENTS.md` exists, confirm setup does not contradict documented commands.
 

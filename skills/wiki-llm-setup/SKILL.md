@@ -1,6 +1,6 @@
 ---
 name: wiki-llm-setup
-description: Set up or retrofit an LLM Wiki in a repository using the three-layer pattern (raw, wiki, schema), ingest/query/lint operations, and index/log conventions from the DDPA article and Karpathy's original gist. Use when the user wants a persistent, compounding markdown knowledge base for AI agents.
+description: Set up or retrofit an LLM Wiki in a repository using a wiki-first folder pattern (wiki/raw + wiki derived pages + schema), ingest/query/lint operations, and index/log conventions from the DDPA article and Karpathy's original gist. Use when the user wants a persistent, compounding markdown knowledge base for AI agents.
 compatibility: Markdown + YAML frontmatter. Works best in git repositories and with agent instruction files such as AGENTS.md or CLAUDE.md.
 ---
 
@@ -42,10 +42,22 @@ Before creating files or changing structure, ask and confirm:
 
 If any answer is ambiguous, stop and ask a follow-up instead of guessing.
 
+## Directory placement contract
+
+Use these placement rules unless the user explicitly overrides them:
+
+- Single top-level knowledge directory: `wiki/`
+- All LLM Wiki assets must be inside `wiki/`
+- Raw source layer: `wiki/raw/`
+- Derived knowledge pages and operation files (`index.md`, `log.md`) also inside `wiki/`
+- Schema contract file (`AGENTS.md` or `CLAUDE.md`) may remain in repo root
+
+If an existing repository already uses a different layout (for example root-level `raw/`), preserve it during adaptation unless the user asks for migration.
+
 ## What To Do First
 
 1. Detect current knowledge layout.
-- Check for `wiki/`, `raw/`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `docs/`, `notes/`, `knowledge/`, `index.md`, `log.md`.
+- Check for `wiki/`, `wiki/raw/`, `AGENTS.md`, `CLAUDE.md`, `README.md`, `docs/`, `notes/`, `knowledge/`, `index.md`, `log.md`.
 
 2. Classify current model.
 - Determine whether the repo currently behaves like:
@@ -58,8 +70,8 @@ If any answer is ambiguous, stop and ask a follow-up instead of guessing.
 - Existing notes/wiki: run `adapt-existing` and preserve existing intent.
 
 4. Anchor on the three-layer architecture.
-- `raw/` as immutable source of truth,
-- `wiki/` as LLM-maintained derived knowledge,
+- `wiki/raw/` as immutable source of truth,
+- `wiki/` as LLM-maintained knowledge layer,
 - schema file (`AGENTS.md`, `CLAUDE.md`, or equivalent) as behavioral contract.
 
 ## Preflight Detection
@@ -82,10 +94,10 @@ Interpretation:
 Recommended baseline:
 
 ```text
-raw/
-  inbox/
-  assets/
 wiki/
+  raw/
+    inbox/
+    assets/
   index.md
   log.md
   entities/
@@ -96,7 +108,7 @@ AGENTS.md (or CLAUDE.md)
 ```
 
 Design intent:
-- `raw/` is immutable input.
+- `wiki/raw/` is immutable input.
 - `wiki/` is continuously maintained output.
 - `index.md` is the content catalog for retrieval/navigation.
 - `log.md` is append-only chronology of operations.
@@ -105,7 +117,7 @@ Design intent:
 
 ### Step 1: Scaffold the three layers
 
-Create `raw/`, `wiki/`, and schema file (`AGENTS.md` or `CLAUDE.md`) if missing.
+Create `wiki/`, `wiki/raw/`, and schema file (`AGENTS.md` or `CLAUDE.md`) if missing.
 
 ### Step 2: Seed `wiki/index.md`
 
@@ -129,7 +141,7 @@ Example pattern:
 ### Step 4: Define schema workflow rules
 
 In `AGENTS.md`/`CLAUDE.md`, define:
-- ingest behavior (read raw source, update summaries, update related pages, update index, append log);
+- ingest behavior (read source from `wiki/raw/`, update summaries, update related pages, update index, append log);
 - query behavior (answer from wiki first, add citations, optionally persist valuable answers into wiki);
 - lint behavior (detect contradictions, stale claims, orphans, missing cross-links, gaps);
 - quality gates (citation expectations, no silent deletion of unresolved conflicts).
@@ -147,7 +159,7 @@ Ingest one source to validate:
 ### Step 1: Map existing materials into layers
 
 Typical mapping:
-- mixed notes/articles -> `raw/` (immutable source layer);
+- mixed notes/articles -> `wiki/raw/` (immutable source layer);
 - derived summaries and concept pages -> `wiki/`;
 - existing AI instruction files -> schema contract.
 
@@ -194,7 +206,7 @@ Define lint cadence and scope policy:
 ## Validation Checklist
 
 Before completion, confirm:
-- `raw/` and `wiki/` layers exist and responsibilities are clear;
+- `wiki/` and `wiki/raw/` layers exist and responsibilities are clear;
 - raw sources are treated as immutable;
 - `wiki/index.md` exists and is updated on ingest;
 - `wiki/log.md` exists and is append-only;

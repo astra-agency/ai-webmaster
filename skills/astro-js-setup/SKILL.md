@@ -21,6 +21,11 @@ Before writing files or running bootstrap commands, ask and confirm:
 1. Target scope
 - Current repository or a new directory?
 
+1.1 Project layout
+- Use a dedicated Astro app directory?
+- Default for greenfield setup: `astro/` in repository root.
+- For existing repos, detect and reuse the current Astro root.
+
 2. Existing project state
 - Is this a greenfield Astro setup or an existing project that must be preserved?
 
@@ -31,6 +36,16 @@ Before writing files or running bootstrap commands, ask and confirm:
 - Should existing config be merged in place (recommended) or replaced where safe?
 
 If any answer is unclear, stop and ask a follow-up instead of guessing.
+
+## Directory placement contract
+
+Use these placement rules unless the user explicitly overrides them:
+
+- Astro application root: `astro/`
+- New Astro scaffolding should be created inside `astro/`, not mixed into repository root
+- Agent/MCP config files remain where the selected client expects them (root or client-specific config paths)
+
+If an existing project already has Astro in another location, preserve that location and adapt in place.
 
 ## What To Do First
 
@@ -57,10 +72,11 @@ pwd
 node -v
 npm -v
 rg --files -g 'package.json' -g 'astro.config.*' -g 'src/pages/**' -g 'AGENTS.md' -g '.agents/**' -g '.github/skills/**' -g '.codex/**' -g '.claude/**' -g '.cursor/**'
+rg --files -g 'astro/**'
 ```
 
 Interpretation:
-- If no Astro files exist, continue with canonical fresh setup.
+- If no Astro files exist, continue with canonical fresh setup in `astro/`.
 - If Astro files exist, do not re-bootstrap; adapt existing config and dependencies.
 - If MCP config already exists, merge `Astro docs` entry without deleting other servers.
 
@@ -71,7 +87,7 @@ Interpretation:
 Run:
 
 ```bash
-npm create astro@latest
+npm create astro@latest astro
 ```
 
 If you already know the integrations you need, add them during project creation with `--add`.
@@ -79,8 +95,8 @@ If you already know the integrations you need, add them during project creation 
 Examples:
 
 ```bash
-npm create astro@latest -- --add react
-npm create astro@latest -- --add react --add partytown
+npm create astro@latest astro -- --add react
+npm create astro@latest astro -- --add react --add partytown
 ```
 
 If you want a starter template, use `--template` with an official example or a GitHub repository.
@@ -95,6 +111,7 @@ For existing Astro projects:
 If the wizard skipped dependency installation:
 
 ```bash
+cd astro
 npm install
 ```
 

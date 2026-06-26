@@ -28,12 +28,12 @@ This project is especially aimed at open source-first workflows, where agents ne
 | Skill                         | What it does |
 |-------------------------------|--------------|
 | **dot-agents-setup**          | Sets up portable .agents protocol structure, migration, and layered config |
-| **astro-js-setup**            | Installs Astro and configures the Astro Docs MCP server for AI-assisted development |
-| **wp-setup**                  | Sets up a modern WordPress development workflow for AI-assisted work on open source CMS projects |
+| **astro-js-setup**            | Installs Astro in `astro/` by default and configures the Astro Docs MCP server for AI-assisted development |
+| **wp-setup**                  | Sets up a modern WordPress workflow with `wordpress/` as default app root for AI-assisted CMS development |
 | **design-md-setup**           | Sets up or retrofits DESIGN.md workflows using @google/design.md (lint, diff, export, spec) |
 | **marketing-md-setup**        | Sets up or retrofits MARKETING.md Marketing-as-Code workflows using core + companion architecture |
 | **infrastructure-md-setup**   | Sets up or retrofits INFRASTRUCTURE.md workflows for Infrastructure-as-Code guidance and guardrails |
-| **wiki-llm-setup**            | Sets up or retrofits an LLM Wiki workflow (raw/wiki/schema + ingest/query/lint) for persistent AI knowledge bases |
+| **wiki-llm-setup**            | Sets up or retrofits an LLM Wiki workflow with all assets inside `wiki/` (`wiki/raw`, index/log, derived pages) |
 | **rfc**                       | Creates RFC (Request for Comments) documents from scratch or from rough notes, using the project's RFC template. Supports RFP (Request for Proposals) generation for external contractors. |
 
 ---
