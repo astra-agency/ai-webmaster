@@ -29,6 +29,7 @@ This project is especially aimed at open source-first workflows, where agents ne
 | **astro-js-setup**      | Installs Astro and configures the Astro Docs MCP server for AI-assisted development |
 | **wp-setup**            | Sets up a modern WordPress development workflow for AI-assisted work on open source CMS projects |
 | **design-md-setup**     | Sets up or retrofits DESIGN.md workflows using @google/design.md (lint, diff, export, spec) |
+| **marketing-md-setup**  | Sets up or retrofits MARKETING.md Marketing-as-Code workflows using core + companion architecture |
 
 ---
 
@@ -51,6 +52,9 @@ npx skills add astra-agency/ai-webmaster --skill wp-setup
 
 # Install DESIGN.md setup skill
 npx skills add astra-agency/ai-webmaster --skill design-md-setup
+
+# Install MARKETING.md setup skill
+npx skills add astra-agency/ai-webmaster --skill marketing-md-setup
 
 
 ```
