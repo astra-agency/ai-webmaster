@@ -22,6 +22,7 @@ Modern AI assistants write code well, but often:
 | Skill                    | What it does |
 |-------------------------|--------------|
 | **webmaster-router**    | Main router: detects site type and routes to the appropriate skills |
+| **dot-agents-setup**    | Sets up portable .agents protocol structure, migration, and layered config |
 | **site-triage**         | Automatically detects the tech stack (Next.js, Astro, WP, Vite, Webflow, etc.) |
 | **html-css-js**         | Modern HTML, CSS (including Tailwind, CSS Modules), JavaScript/TypeScript best practices |
 | **seo**                 | On-page SEO, technical SEO, Schema.org, Core Web Vitals, indexing |
@@ -43,7 +44,8 @@ Modern AI assistants write code well, but often:
 npx skills add astra-agency/ai-webmaster --list
 
 # Install a specific skill
-npx skills add astra-agency/ai-webmaster --skill webmaster-router
+npx skills add astra-agency/ai-webmaster --skill dot-agents-setup
 
 # Install multiple skills
-npx skills add astra-agency/ai-webmaster --skill webmaster-router site-triage seo performance
+npx skills add astra-agency/ai-webmaster --skill webmaster-router dot-agents-setup site-triage seo performance
+```
