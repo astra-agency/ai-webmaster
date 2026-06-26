@@ -2,6 +2,8 @@
 
 **Expert skills for AI assistants working with modern open source websites and stacks.**
 
+url: https://github.com/astra-agency/ai-webmaster
+
 A set of portable skills that teach OpenCode, VS Code, Claude, Cursor, Copilot, Codex, and other AI agents how to professionally work with modern open source websites, developer tools, and ecosystems: analysis, development, SEO, performance, deployment, security, and maintenance.
 
 The main focus is practical open source tooling and ecosystems: OpenCode, OpenClaw, OpenRouter, Astro JS, WordPress, and adjacent web stacks that teams actually use in production.
