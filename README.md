@@ -43,6 +43,9 @@ This project is especially aimed at open source-first workflows, where agents ne
 # List all available skills
 npx skills add astra-agency/ai-webmaster --list
 
+# Install all skills from this repository
+npx skills add astra-agency/ai-webmaster --all
+
 # Install a specific skill
 npx skills add astra-agency/ai-webmaster --skill dot-agents-setup
 
