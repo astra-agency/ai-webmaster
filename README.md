@@ -15,7 +15,7 @@ Modern AI assistants write code well, but often:
 - Ignore Core Web Vitals and performance
 - Create weak semantic HTML and poor accessibility
 - Suggest insecure solutions
-- Don’t understand the specifics of different tech stacks (Next.js, Astro, WordPress, vanilla HTML, etc.)
+- Don't understand the specifics of different tech stacks (Next.js, Astro, WordPress, vanilla HTML, etc.)
 
 This project is especially aimed at open source-first workflows, where agents need to understand both the tools themselves and the conventions around integrating them into real developer environments.
 
@@ -23,15 +23,16 @@ This project is especially aimed at open source-first workflows, where agents ne
 
 ## Available Skills
 
-| Skill                    | What it does |
-|-------------------------|--------------|
-| **dot-agents-setup**    | Sets up portable .agents protocol structure, migration, and layered config |
-| **astro-js-setup**      | Installs Astro and configures the Astro Docs MCP server for AI-assisted development |
-| **wp-setup**            | Sets up a modern WordPress development workflow for AI-assisted work on open source CMS projects |
-| **design-md-setup**     | Sets up or retrofits DESIGN.md workflows using @google/design.md (lint, diff, export, spec) |
-| **marketing-md-setup**  | Sets up or retrofits MARKETING.md Marketing-as-Code workflows using core + companion architecture |
-| **infrastructure-md-setup** | Sets up or retrofits INFRASTRUCTURE.md workflows for Infrastructure-as-Code guidance and guardrails |
-| **wiki-llm-setup**      | Sets up or retrofits an LLM Wiki workflow (raw/wiki/schema + ingest/query/lint) for persistent AI knowledge bases |
+| Skill                         | What it does |
+|-------------------------------|--------------|
+| **dot-agents-setup**          | Sets up portable .agents protocol structure, migration, and layered config |
+| **astro-js-setup**            | Installs Astro and configures the Astro Docs MCP server for AI-assisted development |
+| **wp-setup**                  | Sets up a modern WordPress development workflow for AI-assisted work on open source CMS projects |
+| **design-md-setup**           | Sets up or retrofits DESIGN.md workflows using @google/design.md (lint, diff, export, spec) |
+| **marketing-md-setup**        | Sets up or retrofits MARKETING.md Marketing-as-Code workflows using core + companion architecture |
+| **infrastructure-md-setup**   | Sets up or retrofits INFRASTRUCTURE.md workflows for Infrastructure-as-Code guidance and guardrails |
+| **wiki-llm-setup**            | Sets up or retrofits an LLM Wiki workflow (raw/wiki/schema + ingest/query/lint) for persistent AI knowledge bases |
+| **rfc**                       | Creates RFC (Request for Comments) documents from scratch or from rough notes, using the project's RFC template. Supports RFP (Request for Proposals) generation for external contractors. |
 
 ---
 
@@ -67,5 +68,7 @@ npx skills add astra-agency/ai-webmaster --skill infrastructure-md-setup
 # Install LLM Wiki setup skill
 npx skills add astra-agency/ai-webmaster --skill wiki-llm-setup
 
-
+# Install RFC skill
+npx skills add astra-agency/ai-webmaster --skill rfc
 ```
+
