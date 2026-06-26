@@ -40,6 +40,8 @@ npx skills add astra-agency/ai-webmaster --skill dot-agents-setup
 # Install Astro setup skill
 npx skills add astra-agency/ai-webmaster --skill astro-js-setup
 
-# Install multiple skills
-npx skills add astra-agency/ai-webmaster --skill webmaster-router dot-agents-setup astro-js-setup site-triage seo performance
+# Install WordPress setup skill
+npx skills add astra-agency/ai-webmaster --skill wp-setup
+
+
 ```
