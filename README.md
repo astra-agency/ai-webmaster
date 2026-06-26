@@ -31,6 +31,7 @@ This project is especially aimed at open source-first workflows, where agents ne
 | **design-md-setup**     | Sets up or retrofits DESIGN.md workflows using @google/design.md (lint, diff, export, spec) |
 | **marketing-md-setup**  | Sets up or retrofits MARKETING.md Marketing-as-Code workflows using core + companion architecture |
 | **infrastructure-md-setup** | Sets up or retrofits INFRASTRUCTURE.md workflows for Infrastructure-as-Code guidance and guardrails |
+| **wiki-llm-setup**      | Sets up or retrofits an LLM Wiki workflow (raw/wiki/schema + ingest/query/lint) for persistent AI knowledge bases |
 
 ---
 
@@ -59,6 +60,9 @@ npx skills add astra-agency/ai-webmaster --skill marketing-md-setup
 
 # Install INFRASTRUCTURE.md setup skill
 npx skills add astra-agency/ai-webmaster --skill infrastructure-md-setup
+
+# Install LLM Wiki setup skill
+npx skills add astra-agency/ai-webmaster --skill wiki-llm-setup
 
 
 ```
