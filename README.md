@@ -74,3 +74,39 @@ npx skills add astra-agency/ai-webmaster --skill wiki-llm-setup
 npx skills add astra-agency/ai-webmaster --skill rfc
 ```
 
+---
+
+## Multi-Repo Setup In One Repository
+
+You can keep all project components in a single repository and still use these skills cleanly.
+
+Recommended top-level layout:
+
+```text
+.
+├── astro/
+├── wordpress/
+├── wiki/
+└── skills/ (optional local custom skills)
+```
+
+How it maps to setup skills:
+
+- `astro-js-setup` -> scaffolds and maintains the Astro app in `astro/`.
+- `wp-setup` -> scaffolds and maintains WordPress runtime in `wordpress/`.
+- `wiki-llm-setup` -> keeps LLM knowledge assets inside `wiki/` (including `wiki/raw/`, `wiki/index.md`, `wiki/log.md`).
+
+Why this works well:
+
+- one repository for product code, CMS layer, and AI knowledge base;
+- independent app roots reduce accidental config mixing;
+- shared CI/CD, issues, and docs in one place;
+- easier onboarding for teams that use both Astro and WordPress.
+
+Suggested workflow:
+
+1. Run Astro setup and point it to `astro/`.
+2. Run WordPress setup and point it to `wordpress/`.
+3. Run Wiki setup and point it to `wiki/`.
+4. Keep root-level agent configs (`.github/skills`, `.codex`, `.claude`, `.cursor`) shared for the whole repository.
+
