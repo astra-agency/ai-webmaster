@@ -59,6 +59,13 @@ Choose one of the following:
 - Workspace only: use ./.agents for repository-specific config
 - Layered (recommended): both, with workspace overriding global
 
+Before creating anything, detect existing state:
+- existing `~/.agents` and/or `./.agents` trees;
+- existing vendor configs (`.cursor`, `.claude`, `.github/copilot-instructions.md`);
+- existing skills/agents/tasks/memories IDs that may conflict.
+
+If state is ambiguous, ask follow-up questions before writing files.
+
 ### Step 2: Create Directory Tree
 
 ```bash
@@ -189,6 +196,18 @@ Review open pull requests and summarize status.
 - migrated skills
 - migrated agents/tasks/memories
 
+### Adaptation Policy For Existing Configs
+
+If `.agents` already exists:
+- do not overwrite files blindly;
+- merge new content into existing files where feasible;
+- preserve existing IDs and only introduce new IDs when needed;
+- prefer additive migration and archive deprecated files only after confirmation.
+
+If migration collides with existing IDs or naming:
+- ask user whether to keep, replace, or rename conflicting items;
+- document the chosen conflict strategy in the final report.
+
 ## Overlay Rules To Preserve
 
 When both layers exist:
@@ -219,11 +238,13 @@ For public sharing as a .dotagents bundle:
 
 When invoked, do this sequence:
 1. Detect whether .agents already exists globally and/or in workspace.
-2. Ask user for desired scope (global, workspace, layered) only if ambiguous.
-3. Scaffold required directories and baseline files.
-4. Migrate existing guidance into normalized locations.
-5. Add at least one concrete skill and validate file structure.
-6. Summarize resulting tree and next operational steps.
+2. Detect existing configs/skills and map potential conflicts.
+3. Ask user for desired scope (global, workspace, layered) only if ambiguous.
+4. Confirm merge-vs-replace strategy when existing files are present.
+5. Scaffold required directories and baseline files.
+6. Migrate existing guidance into normalized locations.
+7. Add at least one concrete skill and validate file structure.
+8. Summarize resulting tree and next operational steps.
 
 ## Quick Verification Commands
 

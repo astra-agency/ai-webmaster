@@ -14,17 +14,55 @@ Use this skill when a user wants to:
 - add the Astro Docs MCP server to an AI coding tool;
 - keep AI-generated Astro code aligned with current docs and setup conventions.
 
+## Inputs Required
+
+Before writing files or running bootstrap commands, ask and confirm:
+
+1. Target scope
+- Current repository or a new directory?
+
+2. Existing project state
+- Is this a greenfield Astro setup or an existing project that must be preserved?
+
+3. MCP target
+- Which AI client should receive MCP config (`vscode`, `codex`, `claude`, `cursor`, or other)?
+
+4. Change policy
+- Should existing config be merged in place (recommended) or replaced where safe?
+
+If any answer is unclear, stop and ask a follow-up instead of guessing.
+
 ## What To Do First
 
-1. Check the local Node.js version.
+1. Detect existing configuration and skills first.
+  - Check for `package.json`, `astro.config.*`, `src/pages/`, and skill/config folders.
+  - Check for existing MCP config used by the selected client.
+  - If files already exist, switch to adaptation flow instead of fresh scaffold flow.
+2. Check the local Node.js version.
    - Astro requires Node.js v22.12.0 or higher.
    - Odd-numbered Node.js releases such as v23 are not supported.
-2. Prefer the official install flow.
+3. Prefer the official install flow.
    - Use `npm create astro@latest` for a new project.
    - Install dependencies if the wizard did not do it automatically.
-3. Decide how the AI tool should connect to MCP.
+4. Decide how the AI tool should connect to MCP.
    - Use the native MCP integration if the tool supports remote HTTP servers.
    - Otherwise, use the tool’s documented MCP connector or local proxy setup.
+
+## Preflight Detection
+
+Run a quick inventory in the target directory before changes:
+
+```bash
+pwd
+node -v
+npm -v
+rg --files -g 'package.json' -g 'astro.config.*' -g 'src/pages/**' -g 'AGENTS.md' -g '.agents/**' -g '.github/skills/**' -g '.codex/**' -g '.claude/**' -g '.cursor/**'
+```
+
+Interpretation:
+- If no Astro files exist, continue with canonical fresh setup.
+- If Astro files exist, do not re-bootstrap; adapt existing config and dependencies.
+- If MCP config already exists, merge `Astro docs` entry without deleting other servers.
 
 ## Canonical Setup Flow
 
@@ -46,6 +84,11 @@ npm create astro@latest -- --add react --add partytown
 ```
 
 If you want a starter template, use `--template` with an official example or a GitHub repository.
+
+For existing Astro projects:
+- skip re-running `npm create astro@latest`;
+- run dependency and config checks only;
+- apply additive updates (do not replace user files unless explicitly approved).
 
 ### Step 2: Install Dependencies And Enter The Project
 
@@ -90,6 +133,24 @@ Use the server configuration format supported by the target AI tool. A generic M
 ```
 
 For tools that require a local proxy, follow the tool-specific MCP docs and point the proxy at the same Astro URL.
+
+If MCP config already exists:
+- preserve all existing `mcpServers` entries;
+- add or update only the Astro Docs server block;
+- avoid changing unrelated transport or auth fields.
+
+## Adaptation Rules For Existing Config
+
+When configuration is already present:
+- prefer merge over replacement;
+- keep file style and key ordering consistent with existing project conventions;
+- avoid destructive edits to existing scripts, integrations, or MCP servers;
+- ask before renaming/deleting files or changing behavior-affecting defaults.
+
+Trigger clarifying questions when:
+- multiple MCP config files exist and source of truth is unclear;
+- Astro version and Node version constraints conflict;
+- existing scripts differ from recommended commands.
 
 ### Step 5: Use Astro Best Practices In Agent Prompts
 

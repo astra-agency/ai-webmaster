@@ -43,6 +43,10 @@ Before running any installation command, ask these questions.
 - Confirm Node.js version (`>= 20.18` recommended for Playground tooling).
 - Ask whether WP-CLI is required now.
 
+6. Existing configuration handling
+- Should existing skill/config files be merged (recommended) or replaced when possible?
+- If conflicts are detected, should we keep local customizations or prefer official defaults?
+
 If any answer is missing or ambiguous, stop and ask a follow-up instead of guessing.
 
 ## Procedure
@@ -68,9 +72,17 @@ node -v
 npm -v
 docker --version
 rg --files -g 'AGENTS.md' -g '.wp-env.json' -g 'package.json'
+rg --files -g '.github/skills/**' -g '.codex/**' -g '.claude/**' -g '.cursor/**' -g '.agents/**'
 ```
 
 If `AGENTS.md` exists, use it as canonical project command source.
+
+Also detect and classify existing state:
+- preinstalled skill folders in target clients;
+- existing local custom skills that can be overwritten by official installs;
+- existing `.wp-env.json` and npm scripts that should be merged, not replaced.
+
+If conflicting setup standards are found, ask which source of truth to keep.
 
 ### 2) Install official WordPress skills (preferred: `npx skills add`)
 
@@ -92,6 +104,11 @@ npx skills add WordPress/agent-skills --skill wp-plugin-development wp-wpcli-and
 # all skills (run repeatedly or with selected list captured from --list)
 # if tool supports batch install for all, prefer that path
 ```
+
+If skills already exist locally:
+- prefer non-destructive install/update flow;
+- keep local edits unless user approved replacement;
+- when available, use merge mode semantics.
 
 When global install was requested, use:
 
@@ -117,6 +134,12 @@ node shared/scripts/skillpack-install.mjs --dest=<target-repo> --targets=codex,v
 
 Use `--dry-run` first if user asked for preview.
 
+For existing setups, prefer:
+
+```bash
+node shared/scripts/skillpack-install.mjs --dest=<target-repo> --targets=codex,vscode,claude,cursor --mode=merge
+```
+
 ### 4) Configure local WordPress environment in repo
 
 #### Option A: `wp-env`
@@ -134,6 +157,10 @@ If user chose `wp-env` or `both`:
 ```bash
 npx wp-env start
 ```
+
+If `.wp-env.json` and scripts already exist:
+- add only missing keys/scripts;
+- do not remove custom mappings, ports, or plugin/theme mounts without approval.
 
 #### Option B: `playground`
 
@@ -200,6 +227,9 @@ Provide a short final report with:
 ```bash
 node shared/scripts/skillpack-install.mjs --dest=<target-repo> --targets=codex,vscode,claude,cursor --mode=merge
 ```
+
+6. Existing project config conflicts with official defaults.
+- Pause and ask for conflict policy: preserve local, prefer official, or hybrid merge.
 
 ## Escalation
 
