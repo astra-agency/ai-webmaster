@@ -1,8 +1,10 @@
 # AI Webmaster Agent Skills
 
-**Expert skills for AI assistants working with websites.**
+**Expert skills for AI assistants working with modern open source websites and stacks.**
 
-A set of portable skills that teach Claude, Cursor, Copilot, Codex, and other AI agents how to professionally work with modern websites: analysis, development, SEO, performance, deployment, security, and maintenance.
+A set of portable skills that teach OpenCode, VS Code, Claude, Cursor, Copilot, Codex, and other AI agents how to professionally work with modern open source websites, developer tools, and ecosystems: analysis, development, SEO, performance, deployment, security, and maintenance.
+
+The main focus is practical open source tooling and ecosystems: OpenCode, OpenClaw, OpenRouter, Astro JS, WordPress, and adjacent web stacks that teams actually use in production.
 
 ---
 
@@ -15,6 +17,8 @@ Modern AI assistants write code well, but often:
 - Suggest insecure solutions
 - Don’t understand the specifics of different tech stacks (Next.js, Astro, WordPress, vanilla HTML, etc.)
 
+This project is especially aimed at open source-first workflows, where agents need to understand both the tools themselves and the conventions around integrating them into real developer environments.
+
 **AI Webmaster Skills** solve these problems by giving agents up-to-date, proven procedures and checklists.
 
 ## Available Skills (Planned)
@@ -23,6 +27,7 @@ Modern AI assistants write code well, but often:
 |-------------------------|--------------|
 | **dot-agents-setup**    | Sets up portable .agents protocol structure, migration, and layered config |
 | **astro-js-setup**      | Installs Astro and configures the Astro Docs MCP server for AI-assisted development |
+| **wp-setup**            | Sets up a modern WordPress development workflow for AI-assisted work on open source CMS projects |
 
 ---
 
