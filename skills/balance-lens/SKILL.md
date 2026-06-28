@@ -315,6 +315,72 @@ npx skills add <repo-path> --skill balance-lens
 
 ---
 
+## Recommended Companion Skills
+
+These are the best-regarded design skills from the TypeUI ecosystem, Anthropic, and community registries. Use them alongside Balance Lens — let the lens audit and justify the direction, then these skills implement it.
+
+### How to install
+
+All TypeUI skills: `npx typeui.sh pull <slug>` (drops a SKILL.md into your project).
+
+After installing, pass Balance Lens over the result to verify the tech–aesthetics balance.
+
+### Core Aesthetic Presets (TypeUI Registry)
+
+These are the most popular and battle-tested design presets from the TypeUI ecosystem. Each fills a specific visual niche.
+
+| Skill | Slug | Best For | Balance Lens Context |
+|---|---|---|---|
+| **Modern** | `modern` | General web apps, SaaS, startups — clean, production-ready defaults | Strong baseline for most projects; watch for uniformity trap |
+| **Minimal** | `minimal` | Content-first sites, portfolios, documentation | Pushes function-forward; excellent for Form Follows Function dimension |
+| **Paper** | `paper` | Editorial, blogs, long-form content — soft off-white surfaces, warm texture | Strongest in Softening Technology dimension (warm, tactile) |
+| **Neobrutalism** | `neobrutalism` | Bold, standout interfaces — hard shadows, thick borders, vivid colors | Excellent for Juxtaposition & Leveraging Tech dimensions |
+| **Brutalism** | `brutalism` | Raw, high-contrast, structural honesty | Tests Form Follows Function to its extreme |
+| **Refined** | `refined` | Premium, serif-forward editorial design | Balanced across all dimensions; often scores highest Perceptual Alignment |
+| **Bento** | `bento` | Dashboard, grid-based layouts, metrics displays | Strong in Leveraging Tech (CSS Grid heavy) and Form Follows Function |
+| **Glassmorphism** | `glassmorphism` | Creative sites, modern portfolio, futuristic UI | Pushes Leveraging Tech dimension; watch for Overload anti-pattern |
+
+### Anthropic's Recommended Tones
+
+Anthropic's `frontend-design` skill forces a bold, intentional tone choice. These 11 tones map to Balance Lens dimensions as follows:
+
+| Tone | Description | Strongest Dimension | Best Context |
+|---|---|---|---|
+| **Brutally minimal** | Extreme reduction, maximum whitespace, minimal color | Form Follows Function (#1) | Portfolio, docs, creative studios |
+| **Maximalist chaos** | Dense information, layered elements, strong patterns | Juxtaposition (#5) | Art sites, music, experimental |
+| **Retro-futuristic** | Vintage shapes + modern typography, CRT/monitor vibes | Leveraging Tech (#3) | Tech brands, gaming, indie SaaS |
+| **Organic / natural** | Flowing shapes, soft colors, nature-inspired textures | Softening Tech (#4) | Wellness, meditation, eco-brands |
+| **Luxury / refined** | Gold accents, generous whitespace, serif typography | Perceptual Alignment (#6) | Premium products, fashion, finance |
+| **Playful / toy-like** | Rounded everything, bright saturated colors, bouncy motion | Softening Tech (#4) + Juxtaposition (#5) | Kids, games, creative tools |
+| **Editorial / magazine** | Large typography, hero images, columned layout | Integrated Approach (#2) | Media, blogs, publishing |
+| **Brutalist / raw** | System fonts, exposed grids, no polish | Form Follows Function (#1) | Personal sites, experimental |
+| **Art deco / geometric** | Symmetrical patterns, gold/black palette, sharp angles | Leveraging Tech (#3) | Cultural institutions, luxury |
+| **Soft / pastel** | Muted colors, rounded corners, gentle gradients | Softening Tech (#4) | Lifestyle, health, food |
+| **Industrial / utilitarian** | Monospace, dark palette, functional layout, tool-like | Form Follows Function (#1) | Dev tools, dashboards, CLI UIs |
+
+### Situational Recommendations
+
+| If You're Building... | Recommended Skill(s) | Why |
+|---|---|---|
+| SaaS dashboard | `modern` + `dashboard` | Clean, functional, data-dense; watch for Tech-first anti-pattern |
+| Editorial / blog | `paper` + `editorial` + `refined` | Warm, readable, typography-forward |
+| Creative portfolio | Anthropic's *Maximalist chaos* or *Brutalist/raw* | Stand out; push Juxtaposition dimension |
+| E-commerce | `modern` + `bento` + `spacious` | Trust + clarity + room for product visuals |
+| Dev tool / API docs | *Industrial/utilitarian* or `minimal` + `mono` | Honest, functional, fast; strong Form Follows Function |
+| Wellness / meditation | *Organic/natural* or *Soft/pastel* + `paper` | Warm, calm, high Softening dimension |
+| Corporate / enterprise | `corporate` + `professional` + `enterprise` | Trustworthy, consistent; watch for Uniformity trap |
+| Experimental / art | *Maximalist chaos* or `artistic` + `vibrant` | Push boundaries; use Balance Lens to check usability |
+
+### Workflow with Balance Lens
+
+1. Use Balance Lens to evaluate the project goals and constraints (Step 1-2 of the workflow)
+2. Select a companion skill from the tables above based on the context
+3. Install the skill (`npx typeui.sh pull <slug>`) or prompt an agent with the Anthropic tone
+4. Run Balance Lens again on the generated output to verify the technology–aesthetics balance
+5. Iterate until all 6 dimensions score 3+ and no anti-patterns remain
+
+---
+
 ## References & Further Reading
 
 ### Foundational Books
