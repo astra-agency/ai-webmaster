@@ -12,6 +12,23 @@ The main focus is practical open source tooling and ecosystems: OpenCode, OpenCl
 
 ## Installation
 
+
+### Basic, Context and Spec Driven Development
+```bash
+# List all available skills
+npx skills add astra-agency/ai-webmaster --list
+
+# Install all skills from this repository
+npx skills add astra-agency/ai-webmaster --all
+
+# Install a specific skill
+npx skills add astra-agency/ai-webmaster --skill dot-agents-setup
+
+# Install RFC skill
+npx skills add astra-agency/ai-webmaster --skill rfc
+
+```
+
 ### Design UI/UX Setup Skills
 
 ```bash
@@ -32,21 +49,6 @@ npx skills add astra-agency/ai-webmaster --skill astro-js-setup
 npx skills add astra-agency/ai-webmaster --skill wp-setup
 ```
 
-### Basic, Context and Spec Driven Development
-```bash
-# List all available skills
-npx skills add astra-agency/ai-webmaster --list
-
-# Install all skills from this repository
-npx skills add astra-agency/ai-webmaster --all
-
-# Install a specific skill
-npx skills add astra-agency/ai-webmaster --skill dot-agents-setup
-
-# Install RFC skill
-npx skills add astra-agency/ai-webmaster --skill rfc
-
-```
 
 ## Links and recommended resources
 
