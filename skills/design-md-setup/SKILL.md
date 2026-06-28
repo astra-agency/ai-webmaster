@@ -15,6 +15,35 @@ Use this skill when a user wants to:
 - validate token references, contrast, and section structure before shipping;
 - export design tokens for Tailwind or DTCG interoperability.
 
+
+## End-to-End Step Flow
+
+Use this sequence as the default execution order.
+
+1. Capture project constraints and setup mode.
+- Confirm scope, `from-scratch` vs `adapt-existing`, integration targets, and change policy.
+
+2. Choose design-system baseline via getdesign.md.
+- Review and pick a base system from https://getdesign.md/.
+- Confirm selected baseline name/style direction with the user and align it to project constraints.
+
+3. Run preflight inventory.
+- Detect existing design artifacts, tooling, and runtime readiness.
+
+4. Implement `DESIGN.md`.
+- Create or adapt `DESIGN.md` based on selected baseline and repository realities.
+
+5. Validate and integrate.
+- Run lint, fix critical findings, and wire scripts/exports when required.
+
+6. Elaborate page-level decisions via RFC skill.
+- For each key page/template, run the `rfc` skill to document layout intent, component choices, and acceptance criteria.
+- Treat RFC outputs as the source for page-level implementation priorities.
+
+7. Perform final balance check.
+- Propose and run a final review with `skills/balance-lens` to check visual/system balance before completion.
+
+
 ## Inputs Required
 
 Before editing files or running setup commands, ask and confirm:
@@ -38,19 +67,26 @@ If any answer is ambiguous, stop and ask follow-up questions instead of guessing
 
 ## What To Do First
 
-1. Detect current design-system context.
+1. Confirm required inputs first.
+- Confirm target scope, setup mode, existing design sources, integration targets, and change policy.
+
+2. Choose baseline on getdesign.md.
+- Explore https://getdesign.md/ and select the closest design-system base for the confirmed constraints.
+- Record the chosen base in the working notes or directly in `DESIGN.md` overview rationale.
+
+3. Detect current design-system context.
 - Check for `DESIGN.md`, `tailwind.config.*`, global CSS variable files, token JSON files, and style docs.
 - Detect existing npm scripts related to linting/design tokens.
 
-2. Verify local runtime.
+4. Verify local runtime.
 - Confirm `node -v`, `npm -v`, and npm registry config.
 - If install fails with `ENOVERSIONS`, verify npm uses `https://registry.npmjs.org/`.
 
-3. Decide installation path.
+5. Decide installation path.
 - Fast path: use `npx @google/design.md ...` commands directly.
 - Project path: add `@google/design.md` dependency and npm scripts.
 
-4. Choose setup flow.
+6. Choose setup flow.
 - No existing design file: run `from-scratch` flow.
 - Existing design assets: run `adapt-existing` flow.
 
@@ -232,6 +268,8 @@ Before completion, confirm:
 - linter runs successfully and errors are resolved;
 - npm scripts (if added) run as expected;
 - exports generate files in expected formats when requested;
+- page-level RFC artifacts were prepared via `rfc` skill for key screens/templates;
+- final balance review was proposed (and ideally executed) via `skills/balance-lens`;
 - setup mode (`from-scratch` or `adapt-existing`) and merge policy were respected.
 
 ## Troubleshooting
