@@ -57,6 +57,8 @@ npx skills add astra-agency/ai-webmaster --skill wp-setup
 - https://www.skills.sh/google-labs-code/stitch-skills/design-md
 - https://www.skills.sh/anthropics/skills/frontend-design
 - https://getdesign.md/
+- https://www.tasteskill.dev/
+- https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
 
 ## Why these skills are needed
 
