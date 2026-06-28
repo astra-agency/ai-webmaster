@@ -74,6 +74,9 @@ npx skills add astra-agency/ai-webmaster --skill wiki-llm-setup
 npx skills add astra-agency/ai-webmaster --skill rfc
 ```
 
+## Links and recommended resources
+- https://www.skills.sh/google-labs-code/stitch-skills/design-md
+
 ---
 
 ## Multi-Repo Setup In One Repository
