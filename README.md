@@ -53,6 +53,7 @@ npx skills add astra-agency/ai-webmaster --skill wp-setup
 ## Links and recommended resources
 
 ### Design UI/UX
+- https://github.com/bergside/awesome-design-skills
 - https://www.skills.sh/google-labs-code/stitch-skills/design-md
 - https://www.skills.sh/anthropics/skills/frontend-design
 
