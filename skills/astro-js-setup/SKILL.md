@@ -35,6 +35,11 @@ Before writing files or running bootstrap commands, ask and confirm:
 4. Change policy
 - Should existing config be merged in place (recommended) or replaced where safe?
 
+5. UI framework / styling
+- Default: **daisyUI** (https://daisyui.com/docs/install/) on top of Tailwind CSS.
+- Ask the user to confirm daisyUI or pick an alternative (e.g. plain Tailwind, shadcn, Mantine, Park UI, custom).
+- If the user chooses something else, follow that framework's official install guide instead of the daisyUI step below.
+
 If any answer is unclear, stop and ask a follow-up instead of guessing.
 
 ## Directory placement contract
@@ -169,7 +174,36 @@ Trigger clarifying questions when:
 - Astro version and Node version constraints conflict;
 - existing scripts differ from recommended commands.
 
-### Step 5: Use Astro Best Practices In Agent Prompts
+### Step 5: Install The UI Framework (daisyUI Default)
+
+Unless the user picked a different framework in the inputs, install **daisyUI** on top of Tailwind CSS.
+
+Follow the official guide: https://daisyui.com/docs/install/
+
+For a typical Astro + Tailwind v4 project:
+
+1. Ensure Tailwind CSS is installed (Astro `--add tailwind` or manual setup).
+2. Install daisyUI as a Tailwind plugin dependency:
+
+```bash
+npm install daisyui
+```
+
+3. Register daisyUI in the Tailwind config. For Tailwind v4 with `@tailwindcss/vite`, add to your CSS entry file (e.g. `src/styles/global.css`):
+
+```css
+@import "tailwindcss";
+@plugin "daisyui";
+```
+
+4. Verify a daisyUI component renders (e.g. add `<button class="btn btn-primary">daisyUI</button>` to a page) and run `npm run dev`.
+
+If the user chose a different framework:
+- do not install daisyUI;
+- follow that framework's official Astro/Tailwind install instructions;
+- record the choice in the project notes so future steps stay consistent.
+
+### Step 6: Use Astro Best Practices In Agent Prompts
 
 When prompting an AI tool on an Astro project, steer it toward current docs and official commands:
 - start with `npm create astro@latest` for fresh projects;

@@ -272,6 +272,20 @@ Use these as a quick reference when generating specific design recommendations:
 - Every animation should communicate something: feedback, attention, relationship, hierarchy
 - Respect `prefers-reduced-motion`
 
+### Demo Content (PoC & MVP Staging)
+
+When building proofs-of-concept and MVP staging environments, real-looking content is essential — empty states and lorem ipsum break the aesthetic-usability effect and make it impossible to evaluate balance. Use these sources for fast, legitimate demo content:
+
+- **Emoji** — use as lightweight iconography and visual accents in demo UIs (feature lists, status indicators, empty states, navigation). Free, universal, zero asset weight. Prefer single emoji over mixed sets; avoid emoji in body copy of production text.
+  - Good: `🚀 Ship faster`, `✅ Verified`, `📊 Analytics`
+  - Avoid: emoji soup in paragraphs, emoji replacing real icon systems in production
+- **Unsplash** (`https://unsplash.com/`) — free, high-quality, license-friendly photos for hero images, product mockups, avatars, and editorial imagery in PoC/MVP. Use the Unsplash API or direct image URLs for quick integration.
+  - Best for: hero backgrounds, blog post covers, team avatars, product lifestyle shots
+  - Replace with brand-owned assets before production launch
+  - Always check the specific license; default Unsplash License permits most commercial and non-commercial use without attribution (though attribution is appreciated)
+
+**PoC/MVP rule of thumb:** demo content should be good enough to evaluate the 6 balance dimensions, but clearly marked as placeholder so it's not mistaken for final production assets.
+
 ---
 
 ## Design Systems: Balance Evaluation
